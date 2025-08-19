@@ -25,7 +25,7 @@ function activate(context) {
 
     // Custom renderer for images
     const renderer = new marked.Renderer();
-    renderer.image = (href, title, text) => {
+    renderer.image = ({href, title, text}) => {
       let imgUri;
       try {
         if (/^(https?:)?\/\//.test(href)) {
