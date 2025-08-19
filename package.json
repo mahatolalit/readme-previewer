@@ -25,10 +25,10 @@
     ]
   },
   "dependencies": {
-    "marked": "^11.1.1",
-    "highlight.js": "^11.9.0"
+    "highlight.js": "^11.11.1",
+    "marked": "^16.2.0"
   },
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/mahatolalit/readme-previewer.git"
   },
