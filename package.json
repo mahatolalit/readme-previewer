@@ -1,0 +1,39 @@
+{
+  "name": "readme-preview",
+  "displayName": "Readme Preview (Beta)",
+  "description": "Preview README.md files inside VSCode",
+  "version": "0.0.1",
+  "publisher": "lalitmahato",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "main": "./extension.js",
+  "icon": "media/images/icon.png",
+  "contributes": {
+    "commands": [
+      {
+        "command": "readmePreview.showPreview",
+        "title": "Preview README"
+      }
+    ]
+  },
+  "dependencies": {
+    "marked": "^11.1.1",
+    "highlight.js": "^11.9.0"
+  },
+    "repository": {
+    "type": "git",
+    "url": "https://github.com/mahatolalit/readme-previewer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mahatolalit/readme-previewer/issues"
+  },
+  "homepage": "https://github.com/mahatolalit/readme-previewer#readme"
+}
