@@ -2,7 +2,8 @@
 
 Preview your `README.md` (and other markdown files) inside **Visual Studio Code** with a clean, GitHub-style layout.
 
-![Preview](media/images/preview.gif)
+<img src="https://raw.githubusercontent.com/mahatolalit/assets/refs/heads/main/preview.gif" alt="Preview Screenshot" width="100%" />
+
 
 ---
 
