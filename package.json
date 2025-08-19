@@ -2,7 +2,7 @@
   "name": "readme-previewer",
   "displayName": "Readme Previewer – Markdown Preview for VS Code (Beta)",
   "description": "Preview README.md files inside VSCode",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "mahatolalit",
   "engines": {
     "vscode": "^1.80.0"
