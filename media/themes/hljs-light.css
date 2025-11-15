@@ -1,0 +1,28 @@
+/* Highlight.js light theme scoped to VS Code webview */
+.vscode-light .hljs {
+  color: #24292e;
+  background: transparent;
+}
+.vscode-light .hljs-comment,
+.vscode-light .hljs-quote { color: #6e7781; font-style: italic; }
+.vscode-light .hljs-keyword,
+.vscode-light .hljs-selector-tag,
+.vscode-light .hljs-literal,
+.vscode-light .hljs-name { color: #cf222e; }
+.vscode-light .hljs-number,
+.vscode-light .hljs-attr { color: #953800; }
+.vscode-light .hljs-string,
+.vscode-light .hljs-meta .hljs-string,
+.vscode-light .hljs-doctag { color: #0a3069; }
+.vscode-light .hljs-title,
+.vscode-light .hljs-section { color: #0550ae; }
+.vscode-light .hljs-attribute,
+.vscode-light .hljs-variable,
+.vscode-light .hljs-template-variable,
+.vscode-light .hljs-type { color: #953800; }
+.vscode-light .hljs-symbol,
+.vscode-light .hljs-bullet,
+.vscode-light .hljs-code { color: #116329; }
+.vscode-light .hljs-meta { color: #57606a; }
+.vscode-light .hljs-addition { color: #1a7f37; }
+.vscode-light .hljs-deletion { color: #d1242f; }
