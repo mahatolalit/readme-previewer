@@ -1,5 +1,26 @@
-/* Optional extra styling */
-code {
-  font-family: "Fira Code", monospace;
-  font-size: 14px;
+/* Neutral layout and typography only (no colors) */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 20px;
+}
+
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+code, pre, kbd, samp {
+  font-family: "Fira Code", Consolas, "Courier New", monospace;
+  font-size: 13px;
 }
