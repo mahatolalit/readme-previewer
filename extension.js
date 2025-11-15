@@ -110,23 +110,26 @@ function activate(context) {
 }
 
 function getCssUri(context, panel) {
-  const cssPath = vscode.Uri.joinPath(context.extensionUri, "media", "style.css");
-  return panel.webview.asWebviewUri(cssPath);
+  const base = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, "media", "style.css"));
+  const mdLight = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, "media", "themes", "markdown-light.css"));
+  const mdDark = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, "media", "themes", "markdown-dark.css"));
+  const mdHC = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, "media", "themes", "markdown-high-contrast.css"));
+  const hlLight = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, "media", "themes", "hljs-light.css"));
+  const hlDark = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, "media", "themes", "hljs-dark.css"));
+  return { base, mdLight, mdDark, mdHC, hlLight, hlDark };
 }
 
-function getWebviewContent(html, cssUri) {
+function getWebviewContent(html, cssUris) {
   return `<!DOCTYPE html>
   <html lang="en" data-theme="vscode">
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown-light.min.css" media="(prefers-color-scheme: light)">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown-dark.min.css" media="(prefers-color-scheme: dark)">
-    <link rel="stylesheet" href="${cssUri}">
-    <style>
-      body { margin:0; padding:20px; background-color:transparent; }
-      .markdown-body { box-sizing:border-box; min-width:200px; max-width:980px; margin:0 auto; }
-      img { height:auto; }
-    </style>
+    <link rel="stylesheet" href="${cssUris.base}">
+    <link rel="stylesheet" href="${cssUris.mdLight}">
+    <link rel="stylesheet" href="${cssUris.mdDark}">
+    <link rel="stylesheet" href="${cssUris.mdHC}">
+    <link rel="stylesheet" href="${cssUris.hlLight}">
+    <link rel="stylesheet" href="${cssUris.hlDark}">
   </head>
   <body>
     <article class="markdown-body">
