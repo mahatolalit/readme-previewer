@@ -1,0 +1,67 @@
+/* High contrast markdown overrides for accessibility */
+.vscode-high-contrast .markdown-body,
+.vscode-high-contrast-light .markdown-body,
+.vscode-high-contrast-dark .markdown-body {
+  color: #ffffff;
+  background: transparent;
+}
+
+.vscode-high-contrast .markdown-body a,
+.vscode-high-contrast-light .markdown-body a,
+.vscode-high-contrast-dark .markdown-body a {
+  color: #ffff00;
+  text-decoration: underline;
+}
+
+.vscode-high-contrast .markdown-body hr,
+.vscode-high-contrast-light .markdown-body hr,
+.vscode-high-contrast-dark .markdown-body hr {
+  border: 0;
+  border-top: 2px solid #ffffff;
+}
+
+.vscode-high-contrast .markdown-body blockquote,
+.vscode-high-contrast-light .markdown-body blockquote,
+.vscode-high-contrast-dark .markdown-body blockquote {
+  color: #ffffff;
+  border-left: 4px solid #ffffff;
+}
+
+.vscode-high-contrast .markdown-body code,
+.vscode-high-contrast-light .markdown-body code,
+.vscode-high-contrast-dark .markdown-body code,
+.vscode-high-contrast .markdown-body tt,
+.vscode-high-contrast-light .markdown-body tt,
+.vscode-high-contrast-dark .markdown-body tt {
+  background: #000000;
+  border: 2px solid #ffffff;
+  padding: 0.2em 0.4em;
+  border-radius: 0;
+}
+
+.vscode-high-contrast .markdown-body pre,
+.vscode-high-contrast-light .markdown-body pre,
+.vscode-high-contrast-dark .markdown-body pre {
+  background: #000000;
+  border: 2px solid #ffffff;
+}
+
+.vscode-high-contrast .markdown-body th,
+.vscode-high-contrast-light .markdown-body th,
+.vscode-high-contrast-dark .markdown-body th,
+.vscode-high-contrast .markdown-body td,
+.vscode-high-contrast-light .markdown-body td,
+.vscode-high-contrast-dark .markdown-body td {
+  border: 2px solid #ffffff;
+}
+
+/* Focus visibility */
+.vscode-high-contrast .markdown-body a:focus-visible,
+.vscode-high-contrast-light .markdown-body a:focus-visible,
+.vscode-high-contrast-dark .markdown-body a:focus-visible,
+.vscode-high-contrast .markdown-body code:focus-visible,
+.vscode-high-contrast-light .markdown-body code:focus-visible,
+.vscode-high-contrast-dark .markdown-body code:focus-visible {
+  outline: 2px solid #ffff00;
+  outline-offset: 2px;
+}

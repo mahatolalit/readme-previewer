@@ -1,0 +1,72 @@
+/* Light theme markdown styles scoped to VS Code webview theme classes */
+.vscode-light .markdown-body {
+  color: #24292e;
+  background: transparent;
+  line-height: 1.6;
+}
+
+.vscode-light .markdown-body h1,
+.vscode-light .markdown-body h2,
+.vscode-light .markdown-body h3,
+.vscode-light .markdown-body h4,
+.vscode-light .markdown-body h5,
+.vscode-light .markdown-body h6 {
+  color: #1f2328;
+  margin-top: 1.25em;
+  margin-bottom: 0.6em;
+  line-height: 1.25;
+}
+
+.vscode-light .markdown-body a {
+  color: #0969da;
+  text-decoration: none;
+}
+.vscode-light .markdown-body a:hover { text-decoration: underline; }
+
+.vscode-light .markdown-body hr {
+  border: 0;
+  border-top: 1px solid #d0d7de;
+  margin: 24px 0;
+}
+
+.vscode-light .markdown-body blockquote {
+  margin: 0.8em 0;
+  padding: 0 1em;
+  color: #57606a;
+  border-left: 0.25em solid #d0d7de;
+}
+
+.vscode-light .markdown-body code,
+.vscode-light .markdown-body tt {
+  padding: 0.2em 0.4em;
+  border-radius: 6px;
+  background-color: #f6f8fa;
+}
+
+.vscode-light .markdown-body pre {
+  padding: 12px;
+  overflow: auto;
+  border-radius: 6px;
+  background-color: #f6f8fa;
+  border: 1px solid #d0d7de;
+}
+
+.vscode-light .markdown-body table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.vscode-light .markdown-body th,
+.vscode-light .markdown-body td {
+  border: 1px solid #d0d7de;
+  padding: 6px 12px;
+}
+.vscode-light .markdown-body th {
+  background-color: #f6f8fa;
+}
+
+.vscode-light .markdown-body ul,
+.vscode-light .markdown-body ol {
+  padding-left: 2em;
+}
+
+.vscode-light .markdown-body strong { color: #1f2328; }

@@ -1,0 +1,72 @@
+/* Dark theme markdown styles scoped to VS Code webview theme classes */
+.vscode-dark .markdown-body {
+  color: #c9d1d9;
+  background: transparent;
+  line-height: 1.6;
+}
+
+.vscode-dark .markdown-body h1,
+.vscode-dark .markdown-body h2,
+.vscode-dark .markdown-body h3,
+.vscode-dark .markdown-body h4,
+.vscode-dark .markdown-body h5,
+.vscode-dark .markdown-body h6 {
+  color: #e6edf3;
+  margin-top: 1.25em;
+  margin-bottom: 0.6em;
+  line-height: 1.25;
+}
+
+.vscode-dark .markdown-body a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+.vscode-dark .markdown-body a:hover { text-decoration: underline; }
+
+.vscode-dark .markdown-body hr {
+  border: 0;
+  border-top: 1px solid #30363d;
+  margin: 24px 0;
+}
+
+.vscode-dark .markdown-body blockquote {
+  margin: 0.8em 0;
+  padding: 0 1em;
+  color: #8b949e;
+  border-left: 0.25em solid #3b434b;
+}
+
+.vscode-dark .markdown-body code,
+.vscode-dark .markdown-body tt {
+  padding: 0.2em 0.4em;
+  border-radius: 6px;
+  background-color: #161b22;
+}
+
+.vscode-dark .markdown-body pre {
+  padding: 12px;
+  overflow: auto;
+  border-radius: 6px;
+  background-color: #161b22;
+  border: 1px solid #30363d;
+}
+
+.vscode-dark .markdown-body table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.vscode-dark .markdown-body th,
+.vscode-dark .markdown-body td {
+  border: 1px solid #30363d;
+  padding: 6px 12px;
+}
+.vscode-dark .markdown-body th {
+  background-color: #0d1117;
+}
+
+.vscode-dark .markdown-body ul,
+.vscode-dark .markdown-body ol {
+  padding-left: 2em;
+}
+
+.vscode-dark .markdown-body strong { color: #e6edf3; }
