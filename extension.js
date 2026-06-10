@@ -25,7 +25,7 @@ function activate(context) {
 
     // Custom renderer for images
     const renderer = new marked.Renderer();
-    renderer.image = ({href, title, text}) => {
+    renderer.image = ({ href, title, text }) => {
       let imgUri;
       try {
         if (/^(https?:)?\/\//.test(href)) {
@@ -34,7 +34,7 @@ function activate(context) {
           const imgPath = vscode.Uri.joinPath(docFolder, href);
           imgUri = previewPanel?.webview.asWebviewUri(imgPath);
         }
-      } catch (e) {
+      } catch {
         imgUri = href; // Fallback
       }
       const titleAttr = title ? `title="${title}"` : "";
@@ -58,7 +58,10 @@ function activate(context) {
       const text = document.getText();
       const htmlContent = marked.parse(text);
       if (previewPanel) {
-        previewPanel.webview.html = getWebviewContent(htmlContent, getCssUri(context, previewPanel));
+        previewPanel.webview.html = getWebviewContent(
+          htmlContent,
+          getCssUri(context, previewPanel)
+        );
       }
     };
 
@@ -70,18 +73,28 @@ function activate(context) {
         "readmePreview",
         "Preview README",
         vscode.ViewColumn.Beside,
-        { enableScripts: true }
+        { enableScripts: false, localResourceRoots: [docFolder, context.extensionUri] }
       );
       updatePreview();
-      previewPanel.onDidDispose(() => { previewPanel = null; }, null, context.subscriptions);
+      previewPanel.onDidDispose(
+        () => {
+          previewPanel = null;
+        },
+        null,
+        context.subscriptions
+      );
     }
 
     // Refresh preview on document save
-    vscode.workspace.onDidSaveTextDocument(savedDoc => {
-      if (savedDoc.uri.toString() === document.uri.toString()) {
-        updatePreview();
-      }
-    }, null, context.subscriptions);
+    vscode.workspace.onDidSaveTextDocument(
+      (savedDoc) => {
+        if (savedDoc.uri.toString() === document.uri.toString()) {
+          updatePreview();
+        }
+      },
+      null,
+      context.subscriptions
+    );
   });
 
   context.subscriptions.push(disposable);
@@ -110,12 +123,24 @@ function activate(context) {
 }
 
 function getCssUri(context, panel) {
-  const base = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, "media", "style.css"));
-  const mdLight = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, "media", "themes", "markdown-light.css"));
-  const mdDark = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, "media", "themes", "markdown-dark.css"));
-  const mdHC = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, "media", "themes", "markdown-high-contrast.css"));
-  const hlLight = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, "media", "themes", "hljs-light.css"));
-  const hlDark = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, "media", "themes", "hljs-dark.css"));
+  const base = panel.webview.asWebviewUri(
+    vscode.Uri.joinPath(context.extensionUri, "media", "style.css")
+  );
+  const mdLight = panel.webview.asWebviewUri(
+    vscode.Uri.joinPath(context.extensionUri, "media", "themes", "markdown-light.css")
+  );
+  const mdDark = panel.webview.asWebviewUri(
+    vscode.Uri.joinPath(context.extensionUri, "media", "themes", "markdown-dark.css")
+  );
+  const mdHC = panel.webview.asWebviewUri(
+    vscode.Uri.joinPath(context.extensionUri, "media", "themes", "markdown-high-contrast.css")
+  );
+  const hlLight = panel.webview.asWebviewUri(
+    vscode.Uri.joinPath(context.extensionUri, "media", "themes", "hljs-light.css")
+  );
+  const hlDark = panel.webview.asWebviewUri(
+    vscode.Uri.joinPath(context.extensionUri, "media", "themes", "hljs-dark.css")
+  );
   return { base, mdLight, mdDark, mdHC, hlLight, hlDark };
 }
 
