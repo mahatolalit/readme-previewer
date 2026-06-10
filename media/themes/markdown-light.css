@@ -21,7 +21,9 @@
   color: #0969da;
   text-decoration: none;
 }
-.vscode-light .markdown-body a:hover { text-decoration: underline; }
+.vscode-light .markdown-body a:hover {
+  text-decoration: underline;
+}
 
 .vscode-light .markdown-body hr {
   border: 0;
@@ -69,4 +71,6 @@
   padding-left: 2em;
 }
 
-.vscode-light .markdown-body strong { color: #1f2328; }
+.vscode-light .markdown-body strong {
+  color: #1f2328;
+}

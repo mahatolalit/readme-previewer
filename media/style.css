@@ -1,5 +1,6 @@
 /* Neutral layout and typography only (no colors) */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -20,7 +21,10 @@ img {
   max-width: 100%;
 }
 
-code, pre, kbd, samp {
+code,
+pre,
+kbd,
+samp {
   font-family: "Fira Code", Consolas, "Courier New", monospace;
   font-size: 13px;
 }
