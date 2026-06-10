@@ -1,0 +1,11 @@
+node_modules
+.vscode
+.git
+.github
+*.log
+tests/
+test/
+.eslintrc.json
+eslint.config.*
+.prettierrc
+work.txt

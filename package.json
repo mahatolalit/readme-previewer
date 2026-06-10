@@ -2,10 +2,15 @@
   "name": "readme-previewer",
   "displayName": "Readme Previewer – Markdown Preview for VS Code",
   "description": "Preview README.md files inside VSCode",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publisher": "mahatolalit",
   "engines": {
-    "vscode": "^1.80.0"
+    "vscode": "^1.90.0"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "audit": "npm audit --audit-level=high"
   },
   "categories": [
     "Visualization",
@@ -35,5 +40,11 @@
   "bugs": {
     "url": "https://github.com/mahatolalit/readme-previewer/issues"
   },
-  "homepage": "https://github.com/mahatolalit/readme-previewer#readme"
+  "homepage": "https://github.com/mahatolalit/readme-previewer#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/vscode": "^1.120.0",
+    "eslint": "^10.4.1",
+    "prettier": "^3.8.4"
+  }
 }
