@@ -21,6 +21,7 @@ We welcome contributions from everyone. By participating in this project, you ag
 ## 🚀 Getting Started
 
 Before you begin:
+
 - Make sure you have [Node.js](https://nodejs.org/) (v14 or higher) and [npm](https://www.npmjs.com/) installed
 - Have [Visual Studio Code](https://code.visualstudio.com/) installed for testing
 - Familiarize yourself with [VS Code Extension API](https://code.visualstudio.com/api)
@@ -30,30 +31,30 @@ Before you begin:
 ## 💻 Development Setup
 
 1. **Fork the repository**
-   
+
    Click the "Fork" button at the top right of the [repository page](https://github.com/mahatolalit/readme-previewer).
 
 2. **Clone your fork**
-   
+
    ```bash
    git clone https://github.com/YOUR-USERNAME/readme-previewer.git
    cd readme-previewer
    ```
 
 3. **Install dependencies**
-   
+
    ```bash
    npm install
    ```
 
 4. **Open in VS Code**
-   
+
    ```bash
    code .
    ```
 
 5. **Test the extension**
-   
+
    - Press `F5` to open a new VS Code window with the extension loaded
    - Open any `.md` file and run the command `Preview README` from the Command Palette
    - Test your changes in the Extension Development Host window
@@ -97,7 +98,7 @@ We welcome various types of contributions:
  * @returns {string} The complete HTML document
  */
 function generatePreviewHtml(markdown, styles) {
-    // Implementation
+  // Implementation
 }
 ```
 
@@ -148,7 +149,7 @@ perf: optimize markdown rendering for large documents
 ## 🔀 Pull Request Process
 
 1. **Create a new branch**
-   
+
    ```bash
    git checkout -b feature/your-feature-name
    # or
@@ -156,30 +157,30 @@ perf: optimize markdown rendering for large documents
    ```
 
 2. **Make your changes**
-   
+
    - Write clean, well-documented code
    - Test your changes thoroughly in the Extension Development Host
    - Update documentation if necessary
 
 3. **Update the CHANGELOG**
-   
+
    Add your changes to `CHANGELOG.md` under the "Unreleased" section
 
 4. **Commit your changes**
-   
+
    ```bash
    git add .
    git commit -m "feat: add new feature"
    ```
 
 5. **Push to your fork**
-   
+
    ```bash
    git push origin feature/your-feature-name
    ```
 
 6. **Open a Pull Request**
-   
+
    - Go to the [original repository](https://github.com/mahatolalit/readme-previewer)
    - Click "New Pull Request"
    - Select your branch and fill out the PR template
@@ -212,6 +213,7 @@ A clear description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
+
 1. Go to '...'
 2. Click on '...'
 3. See error
@@ -223,6 +225,7 @@ What you expected to happen.
 If applicable, add screenshots to help explain the problem.
 
 **Environment:**
+
 - OS: [e.g., Windows 11, macOS 14]
 - VS Code Version: [e.g., 1.85.0]
 - Extension Version: [e.g., 0.0.3]

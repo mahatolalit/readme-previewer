@@ -59,7 +59,7 @@ When using readme-previewer, please be aware:
 When contributing to this project:
 
 1. **Code Review**: All code changes must be reviewed before merging
-2. **Dependencies**: 
+2. **Dependencies**:
    - Avoid introducing dependencies with known vulnerabilities
    - Run `npm audit` before submitting pull requests
    - Keep dependencies up to date
@@ -99,6 +99,7 @@ Security updates will be released as:
 3. **Immediate patches** for critical vulnerabilities
 
 Users will be notified through:
+
 - GitHub Security Advisories
 - Release notes
 - Repository README updates
