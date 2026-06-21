@@ -28,7 +28,7 @@ jobs:
       - name: Extract Release Notes from CHANGELOG
         run: |
           RAW_VERSION=$(node -p "require('./package.json').version")
-          awk "/^## \\\[${RAW_VERSION}\\\]/ {flag=1; next} /^## \\\[/ {flag=0} flag" CHANGELOG.md > release_notes.md
+          awk '$1 == "##" && $2 == "['"$RAW_VERSION"']" {flag=1; next} $1 == "##" && $2 ~ /^\[/ {flag=0} flag' CHANGELOG.md > release_notes.md
 
       - name: Package VS Code Extension (.vsix)
         # vsce packages the extension. -o specifies the output file name.
