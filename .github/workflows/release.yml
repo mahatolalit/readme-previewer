@@ -23,7 +23,8 @@ jobs:
         run: npm ci
 
       - name: Get version from package.json
-        run: echo "VERSION=v$(node -p "require('./package.json').version")" >> $GITHUB_ENV
+        id: version
+        run: echo "VERSION=v$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Extract Release Notes from CHANGELOG
         run: |
@@ -32,14 +33,14 @@ jobs:
 
       - name: Package VS Code Extension (.vsix)
         # vsce packages the extension. -o specifies the output file name.
-        run: npx @vscode/vsce package -o readme-previewer-${{ env.VERSION }}.vsix
+        run: npx @vscode/vsce package -o readme-previewer-${{ steps.version.outputs.VERSION }}.vsix
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v3
         with:
-          tag_name: ${{ env.VERSION }}
-          name: Release ${{ env.VERSION }}
-          files: readme-previewer-${{ env.VERSION }}.vsix
+          tag_name: ${{ steps.version.outputs.VERSION }}
+          name: Release ${{ steps.version.outputs.VERSION }}
+          files: readme-previewer-${{ steps.version.outputs.VERSION }}.vsix
           body_path: release_notes.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
