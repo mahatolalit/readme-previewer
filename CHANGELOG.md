@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2026-06-21
+
+### Added
+- GitHub-flavored emoji support via `node-emoji`.
+- Dynamic preview window titles that reflect the currently open markdown file.
+
+### Changed
+- Upgraded `marked` dependency to v18+.
+- Refactored code highlighting by migrating from the deprecated `marked` options to the `marked-highlight` extension.
+- Restructured markdown parsing to use a localized `Marked` instance to prevent global state pollution.
+
 ## [1.1.0] - 2026-06-10
 
 ### Added

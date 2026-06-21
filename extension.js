@@ -1,7 +1,9 @@
 const vscode = require("vscode");
-const marked = require("marked");
+const { Marked } = require("marked");
+const { markedHighlight } = require("marked-highlight");
 const hljs = require("highlight.js");
 const path = require("path");
+const emoji = require("node-emoji");
 
 let previewPanel = null;
 let statusBarItem = null;
@@ -24,39 +26,63 @@ function activate(context) {
     const docFolder = vscode.Uri.file(path.dirname(document.uri.fsPath));
 
     // Custom renderer for images
-    const renderer = new marked.Renderer();
-    renderer.image = ({ href, title, text }) => {
-      let imgUri;
-      try {
-        if (/^(https?:)?\/\//.test(href)) {
-          imgUri = href; // External URL
-        } else {
-          const imgPath = vscode.Uri.joinPath(docFolder, href);
-          imgUri = previewPanel?.webview.asWebviewUri(imgPath);
+    const renderer = {
+      image({ href, title, text }) {
+        let imgUri;
+        try {
+          if (/^(https?:)?\/\//.test(href)) {
+            imgUri = href; // External URL
+          } else {
+            const imgPath = vscode.Uri.joinPath(docFolder, href);
+            imgUri = previewPanel?.webview.asWebviewUri(imgPath);
+          }
+        } catch {
+          imgUri = href; // Fallback
         }
-      } catch {
-        imgUri = href; // Fallback
+        const titleAttr = title ? `title="${title}"` : "";
+        const altAttr = text ? `alt="${text}"` : "";
+        return `<img src="${imgUri}" ${altAttr} ${titleAttr} style="max-width:100%;"/>`;
       }
-      const titleAttr = title ? `title="${title}"` : "";
-      const altAttr = text ? `alt="${text}"` : "";
-      return `<img src="${imgUri}" ${altAttr} ${titleAttr} style="max-width:100%;"/>`;
+    };
+
+    const emojiExtension = {
+      name: 'emoji',
+      level: 'inline',
+      start(src) { return src.match(/:[a-z0-9_+-]+:/)?.index; },
+      tokenizer(src) {
+        const match = /^:([a-z0-9_+-]+):/.exec(src);
+        if (match) {
+          return {
+            type: 'emoji',
+            raw: match[0],
+            name: match[1]
+          };
+        }
+      },
+      renderer(token) {
+        const emojiChar = emoji.get(token.name);
+        return emojiChar || token.raw;
+      }
     };
 
     // Configure markdown parser with syntax highlighting
-    marked.setOptions({
-      renderer,
-      highlight: (code, lang) => {
-        if (hljs.getLanguage(lang)) {
-          return hljs.highlight(code, { language: lang }).value;
+    const markedInstance = new Marked(
+      markedHighlight({
+        langPrefix: 'hljs language-',
+        highlight(code, lang) {
+          if (hljs.getLanguage(lang)) {
+            return hljs.highlight(code, { language: lang }).value;
+          }
+          return hljs.highlightAuto(code).value;
         }
-        return hljs.highlightAuto(code).value;
-      }
-    });
+      })
+    );
+    markedInstance.use({ renderer, extensions: [emojiExtension] });
 
     // Update or create preview panel
     const updatePreview = () => {
       const text = document.getText();
-      const htmlContent = marked.parse(text);
+      const htmlContent = markedInstance.parse(text);
       if (previewPanel) {
         previewPanel.webview.html = getWebviewContent(
           htmlContent,
@@ -66,12 +92,13 @@ function activate(context) {
     };
 
     if (previewPanel) {
+      previewPanel.title = `Preview ${path.parse(document.uri.fsPath).name}`;
       updatePreview();
       previewPanel.reveal(vscode.ViewColumn.Beside);
     } else {
       previewPanel = vscode.window.createWebviewPanel(
         "readmePreview",
-        "Preview README",
+        `Preview ${path.parse(document.uri.fsPath).name}`,
         vscode.ViewColumn.Beside,
         { enableScripts: false, localResourceRoots: [docFolder, context.extensionUri] }
       );
